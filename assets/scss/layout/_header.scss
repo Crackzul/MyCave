@@ -1,0 +1,32 @@
+@use "../abstract/variables" as*;
+@use '../abstract/mixins' as *;
+
+
+.header-login {
+  position: relative;
+  padding: 2rem 0;
+  background-color: $color-dark-red;
+
+  .logo {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    width: 300px;
+  }
+
+  .login-title {
+    text-align: center;
+
+    h1 {
+      font-size: 2rem;
+      color: $color-white;
+      margin: 0;
+    }
+
+    p {
+      font-size: $font-size-title;
+      color: $color-white;
+      margin: 0.5rem 0 0;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
+
+
+.btn-primary {
+  @include button($color-primary);
+}
+
+.btn-outline {
+  @include button($color-white, $color-primary);
+  border: 2px solid $color-primary;
+  background-color: transparent;
+}

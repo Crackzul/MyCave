@@ -1,0 +1,84 @@
+@use '../abstract/variables' as *;
+@use '../abstract/mixins' as *;
+
+
+.login-page {
+  background-color: $color-dark-red;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.login-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding: 2rem;
+}
+
+.login-card {
+  position: relative;
+  width: 100%;
+  border-radius: 24px;
+
+  .login-image {
+  width: 100%;
+  max-height: 90vh;
+  object-fit: cover;
+  display: block;
+  border-radius: 24px;
+}
+
+
+  .login-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba($color-primary, 0.9);
+    padding: 2rem;
+    border-radius: 12px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 1px 9px 15px 5px #000;
+
+    h2 {
+      font-size: $font-size-title;
+      margin-bottom: 1rem;
+      color: $color-white;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 12px;
+      background-color: $color-white;
+      font-size: $font-size-base;
+      border: solid 2px #000;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: $color-white;
+      color: $color-black;
+      font-size: 20px;
+      font-weight: bold;
+      border: solid 2px #000;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 4px 5px 20px 1px #000;
+      transition: all 0.3s ease;
+
+      &:hover {
+        opacity: 0.85;
+        transform: scale(1.03);
+        box-shadow: 6px 8px 15px 8px #000;
+      }
+    }
+  }
+}
+

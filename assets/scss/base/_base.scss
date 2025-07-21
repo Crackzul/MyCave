@@ -1,0 +1,16 @@
+@use "../abstract/variables" as*;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $color-dark-red;
+  color: $color-white;
+}
+
+* {
+  box-sizing: border-box;
+}

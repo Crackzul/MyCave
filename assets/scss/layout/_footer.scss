@@ -1,0 +1,10 @@
+@use "../abstract/variables" as*;
+
+
+.footer-login {
+  background-color: rgba($color-purple, 0.5);
+  color: $color-white;
+  text-align: center;
+  padding: 1rem;
+  font-size: $font-size-base;
+}
