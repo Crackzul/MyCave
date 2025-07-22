@@ -1,6 +1,5 @@
-@use '../abstract/mixins' as *;
-@use '../abstract/variables' as *;
-
+@use "../abstract/mixins" as *;
+@use "../abstract/variables" as *;
 
 .btn-primary {
   @include button($color-primary);
@@ -10,4 +9,62 @@
   @include button($color-white, $color-primary);
   border: 2px solid $color-primary;
   background-color: transparent;
+}
+
+// Styles spécifiques pour le header du dashboard
+.dashboard-header {
+  .btn-primary {
+    background-color: $color-white;
+    color: $color-dark-red;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: $font-main;
+    font-size: $font-size-base;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    color: $color-white;
+    border: 2px solid $color-white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: $font-main;
+    font-size: $font-size-base;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+}
+
+// Boutons d'action dans les cartes de vin
+.btn-icon {
+  background: none;
+  border: 1px solid rgba($color-white, 0.3);
+  border-radius: 6px;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: $color-white;
+  transition: all 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+    border-color: $color-white;
+    background-color: rgba($color-white, 0.1);
+  }
 }
