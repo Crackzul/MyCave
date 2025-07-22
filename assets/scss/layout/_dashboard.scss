@@ -1,2 +1,292 @@
-@use "../abstract/variables" as*;
+@use "../abstract/variables" as *;
+
+// Dashboard général
+.dashboard {
+  min-height: 100vh;
+  background-color: $color-white;
+  font-family: $font-main;
+}
+
+// Header du dashboard
+.dashboard-header {
+  background-color: $color-white;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba($color-purple, 0.1);
+
+  .header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+      gap: 15px;
+    }
+  }
+
+  .logo {
+    height: 60px;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .header-text {
+    flex: 1;
+    text-align: center;
+
+    h1 {
+      font-size: $font-size-big-tilte;
+      color: $color-dark-red;
+      margin: 0 0 8px 0;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: $font-size-base;
+      color: $color-purple;
+      margin: 0;
+      font-weight: 400;
+
+      #bottle-count {
+        font-weight: 600;
+        color: $color-primary;
+      }
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    gap: 15px;
+    flex-shrink: 0;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .btn-primary, .btn-outline {
+      filter: drop-shadow(0 2px 4px rgba($color-white, 0.3));
+      padding: 12px 24px;
+      font-size: $font-size-base;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      font-family: $font-main;
+      font-weight: 500;
+
+      &:hover {
+        transform: translateY(-1px);
+        filter: drop-shadow(0 4px 8px rgba($color-white, 0.4));
+      }
+    }
+  }
+}
+
+// Main du dashboard
+.dashboard-main {
+  position: relative;
+  min-height: calc(100vh - 200px);
+  padding: 40px 0;
+
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    overflow: hidden;
+
+    .bg-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+      margin: 0 20px;
+      max-width: calc(100% - 40px);
+      opacity: 0.3;
+    }
+  }
+
+  .wines-grid {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    max-height: 500px;
+    overflow-y: auto;
+    
+    /* Style de la scrollbar */
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: rgba($color-white, 0.1);
+      border-radius: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: rgba($color-primary, 0.6);
+      border-radius: 4px;
+      
+      &:hover {
+        background: rgba($color-primary, 0.8);
+      }
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+}
+
+// Cartes de vin
+.wine-card {
+  background: rgba($color-white, 0.95);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba($color-dark-red, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba($color-purple, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  gap: 15px;
+  min-height: 160px;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba($color-dark-red, 0.15);
+  }
+
+  .wine-image {
+    flex-shrink: 0;
+    width: 80px;
+    height: 120px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba($color-purple, 0.1);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .wine-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+      font-size: 20px;
+      color: $color-dark-red;
+      margin: 0 0 8px 0;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .wine-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 10px;
+
+      span {
+        font-size: 14px;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-weight: 500;
+
+        &.year {
+          background: rgba($color-primary, 0.1);
+          color: $color-primary;
+        }
+
+        &.grape {
+          background: rgba($color-purple, 0.1);
+          color: $color-purple;
+        }
+
+        &.region {
+          background: rgba($color-dark-red, 0.1);
+          color: $color-dark-red;
+        }
+      }
+    }
+
+    .wine-description {
+      font-size: 14px;
+      color: $color-purple;
+      line-height: 1.4;
+      margin: 0 0 15px 0;
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .wine-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+
+      .btn-icon {
+        background: none;
+        border: 1px solid rgba($color-purple, 0.3);
+        border-radius: 6px;
+        padding: 6px 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.2s ease;
+        color: $color-purple;
+
+        &:hover {
+          background: rgba($color-purple, 0.1);
+          border-color: $color-purple;
+          transform: scale(1.05);
+        }
+
+        &:first-child:hover {
+          background: rgba($color-primary, 0.1);
+          border-color: $color-primary;
+          color: $color-primary;
+        }
+
+        &:last-child:hover {
+          background: rgba(#dc3545, 0.1);
+          border-color: #dc3545;
+          color: #dc3545;
+        }
+      }
+    }
+  }
+}
+
+// Footer du dashboard
+.dashboard-footer {
+  background-color: $color-white;
+  padding: 20px 0;
+  border-top: 1px solid rgba($color-purple, 0.1);
+  text-align: center;
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    color: $color-purple;
+  }
+}
 
