@@ -272,42 +272,33 @@
   }
   
   .dashboard-main .wines-container {
-    width: 800px;
+    width: 100%;
   }
 }
 
 @media (max-width: 768px) {
   .dashboard-main .wines-container {
     width: 100%;
-    max-width: 400px; // Une seule carte peut tenir
     padding: 1rem;
   }
-  
+
   .wine-card {
-    width: 200%; // Prend toute la largeur du container
-    height: 70vh;
+    width: calc(50% - 1rem); // 2 colonnes tablette
+    height: auto;
   }
 }
 
-@media (max-width: 600px) {
-  .wines-container {
-  display: flex;
-  flex-direction: column;    // Empilement vertical
-  align-items: center;       // Centrer horizontalement  
-  gap: 10rem;              // Espacement uniforme
+
+@media (max-width: 425px) {
+  .dashboard-main .wines-container {
+    display: block !important;
+    padding: 1rem;
+  }
+
+  .wine-card {
+    width: 100% !important;
+    max-width: 360px;
+    margin: 0 auto 2rem auto;
+  }
 }
 
-.wine-card {
-  width: 100%;              // Prend toute la largeur
-}
-  
-  .wine-card {
-    width: 100%;
-  }
-  
-  .dashboard-header .header-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-  }
-}

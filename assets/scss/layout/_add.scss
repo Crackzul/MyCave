@@ -1,0 +1,117 @@
+@use '../abstract/variables' as *;
+
+.add-wine {
+  background-color: $color-dark-red;
+  color: $color-white;
+  font-family: $font-main;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .add-wine-header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    .logo {
+      height: 80px;
+    }
+
+    .header-text {
+      h1 {
+        font-size: $font-size-big-tilte;
+        margin: 0;
+        color: $color-white;
+      }
+
+      p {
+        font-size: $font-size-base;
+        color: $color-white;
+      }
+    }
+  }
+
+  .add-wine-main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+
+    .add-wine-modal {
+      background-color: rgba($color-primary, 0.6);
+      border: 1px solid rgba($color-white, 0.3);
+      border-radius: 20px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      color: $color-white;
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+
+        h2 {
+          margin: 0;
+          font-size: 24px;
+        }
+
+        .btn-back {
+          background: none;
+          color: $color-white;
+          border: 1px solid rgba($color-white, 0.3);
+          padding: 0.5rem 1rem;
+          border-radius: 8px;
+          cursor: pointer;
+
+          &:hover {
+            background: rgba($color-white, 0.1);
+          }
+        }
+      }
+
+      .form-group {
+        margin-bottom: 1.2rem;
+
+        label {
+          display: block;
+          margin-bottom: 0.5rem;
+        }
+
+        input,
+        textarea {
+          width: 100%;
+          padding: 0.8rem;
+          border: none;
+          border-radius: 8px;
+          font-size: 1rem;
+        }
+      }
+
+      .btn-submit {
+        background-color: $color-primary;
+        color: $color-white;
+        border: none;
+        border-radius: 8px;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .add-wine-footer {
+    background-color: rgba($color-purple, 0.5);
+    color: $color-white;
+    text-align: center;
+    padding: 1rem;
+    font-size: $font-size-base;
+  }
+}
