@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ajouter une bouteille – MyCAVE</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="add-wine">
+  <header class="add-wine-header">
+    <div class="header-content">
+      <img src="assets/img/logo-large.png" alt="myCAVE logo" class="logo">
+      <div class="header-text">
+        <h1>Bienvenue dans votre cave Didier</h1>
+        <p>Elle contient déjà <span id="bottle-count">12</span> bouteilles</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="add-wine-main">
+    <!-- IMAGE DE FOND IDENTIQUE AU DASHBOARD -->
+    <div class="background-cave">
+      <img src="assets/img/cave-background.jpg" alt="Cave background" class="cave-image">
+    </div>
+
+    <div class="add-wine-modal">
+      <div class="modal-header">
+        <button class="btn-back" onclick="window.location.href='dashboard.html'">← Retour</button>
+        <h2>Ajouter votre nouvelle bouteille</h2>
+      </div>
+
+      <form class="add-wine-form" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" name="name" placeholder="Nom du vin" required>
+        </div>
+
+        <div class="form-group">
+          <label>Year</label>
+          <input type="number" name="year" placeholder="Année" min="1900" max="2025" required>
+        </div>
+
+        <div class="form-group">
+          <label>Grapes</label>
+          <input type="text" name="grapes" placeholder="Cépage" required>
+        </div>
+
+        <div class="form-group">
+          <label>Country</label>
+          <input type="text" name="country" placeholder="Pays" required>
+        </div>
+
+        <div class="form-group">
+          <label>Region</label>
+          <input type="text" name="region" placeholder="Région" required>
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <textarea name="description" placeholder="Description du vin" rows="3" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Picture</label>
+          <input type="file" name="picture" accept="image/*">
+        </div>
+
+        <button type="submit" class="btn-submit">
+          💾 Enregistrer la bouteille
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="add-wine-footer">
+    <p>© 2025 Marty Didier tout droits réservés</p>
+  </footer>
+
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      
+      // Récupérer les données du formulaire
+      const formData = new FormData(event.target);
+      const wineData = {
+        name: formData.get('name') || event.target.querySelector('input[type="text"]').value,
+        year: formData.get('year') || event.target.querySelector('input[type="number"]').value,
+        grapes: formData.get('grapes') || event.target.querySelectorAll('input[type="text"]')[1].value,
+        country: formData.get('country') || event.target.querySelectorAll('input[type="text"]')[2].value,
+        region: formData.get('region') || event.target.querySelectorAll('input[type="text"]')[3].value,
+        description: formData.get('description') || event.target.querySelector('textarea').value,
+        picture: null // Sera géré plus tard avec Symfony
+      };
+      
+      // Vérifier que tous les champs obligatoires sont remplis
+      if (!wineData.name || !wineData.year || !wineData.grapes || !wineData.country || !wineData.region || !wineData.description) {
+        alert('Veuillez remplir tous les champs obligatoires.');
+        return;
+      }
+      
+      // Stocker temporairement dans localStorage pour la démonstration
+      // En production, ceci sera remplacé par un appel API Symfony
+      let storedWines = JSON.parse(localStorage.getItem('newWines') || '[]');
+      storedWines.push(wineData);
+      localStorage.setItem('newWines', JSON.stringify(storedWines));
+      
+      alert('Bouteille ajoutée avec succès!');
+      window.location.href = 'dashboard.html';
+    }
+  </script>
+
+</body>
+</html>
