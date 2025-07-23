@@ -280,28 +280,29 @@
 @media (max-width: 768px) {
   .dashboard-main {
     padding: 1rem;
-    align-items: flex-start; // Align en haut sur mobile
-    min-height: calc(100vh - 160px); // Plus d'espace vertical
+    align-items: center; // Centrer verticalement
+    min-height: calc(100vh - 160px);
     
     .wines-container {
       width: 100%;
-      max-width: 350px; // TRÈS étroit pour forcer 1 colonne
-      max-height: 75vh; // Plus d'espace vertical
-      padding: 0.5rem;
-      margin-top: 2rem; // Décaler vers le bas pour centrer
+      max-width: 320px; // Container étroit
+      max-height: 70vh; // Hauteur optimisée
+      padding: 1rem;
       
-      // FORCER Grid avec 1 colonne
-      display: grid !important;
-      grid-template-columns: 1fr !important;
-      justify-items: center;
+      // FLEXBOX PROPRE pour mobile
+      display: flex;
+      flex-direction: column; // Colonne unique
+      align-items: center; // Centrer les cartes
       gap: 1.5rem;
     }
   }
   
   .wine-card {
-    width: 100% !important; // Forcer la largeur
-    max-width: 320px;
+    // FLEXBOX : une carte = toute la largeur du container
+    width: 100%;
+    max-width: 300px; // Taille fixe de carte
     height: 500px;
+    flex-shrink: 0; // Empêcher la compression
     
     .wine-image img {
       height: 120px;
@@ -317,7 +318,7 @@
     
     .wine-description {
       font-size: 13px;
-      -webkit-line-clamp: 6;
+      -webkit-line-clamp: 6; // 6 lignes sur mobile
     }
     
     .wine-actions .btn-icon {
@@ -329,16 +330,32 @@
 
 @media (max-width: 600px) {
   .dashboard-main {
+    padding: 0.5rem;
+    
     .wines-container {
-      max-width: 300px; // Encore plus étroit
-      margin-top: 1rem;
+      max-width: 280px; // Plus petit container
+      max-height: 65vh;
+      padding: 0.5rem;
     }
   }
   
   .wine-card {
-    max-width: 280px;
+    max-width: 260px;
     height: 450px;
     padding: 1.2rem;
+    
+    .wine-image img {
+      height: 100px; // Image plus petite
+    }
+    
+    .wine-info h3 {
+      font-size: 16px;
+    }
+    
+    .wine-description {
+      font-size: 12px;
+      -webkit-line-clamp: 5; // Moins de lignes
+    }
   }
   
   .dashboard-header .header-content {
