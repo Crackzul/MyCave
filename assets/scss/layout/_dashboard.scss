@@ -317,27 +317,32 @@
 @media (max-width: 425px) {
   .dashboard-main {
     padding: 0.5rem;
+    overflow-x: hidden; // Empêcher le scroll horizontal
     
     .wines-container {
-      width: 100%;
-      max-width: 100%;
+      width: 100vw;
+      max-width: calc(100vw - 1rem); // Moins que la largeur écran
       padding: 0.5rem;
       gap: 1rem;
+      margin: 0;
       
       // FORCER LA COLONNE UNIQUE
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
+      overflow-x: hidden; // Pas de scroll horizontal
     }
   }
   
   .wine-card {
-    // UNE SEULE CARTE PAR LIGNE
-    width: 100% !important;
-    max-width: 340px;
-    min-width: 280px;
+    // UNE SEULE CARTE PAR LIGNE - TAILLE RÉDUITE
+    width: calc(100vw - 2rem) !important; // Largeur écran moins marges
+    max-width: 320px !important; // Plus petit que 340px
+    min-width: unset; // Supprimer min-width
     height: 450px;
-    padding: 1.2rem;
+    padding: 1rem; // Padding réduit
+    margin: 0; // Pas de marge
+    box-sizing: border-box; // Important pour le calcul
     
     .wine-image img {
       height: 100px;
