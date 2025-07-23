@@ -54,7 +54,7 @@
     padding: 2rem;
 
     // MÊME IMAGE DE FOND QUE LE DASHBOARD
-    .background-cave {
+    .background-form {
       position: absolute;
       top: 0;
       left: 0;
@@ -80,7 +80,7 @@
       border-radius: 20px;
       padding: 2rem;
       width: 100%;
-      max-width: 600px;
+      max-width: 750px;
       box-shadow: 6px 6px 20px rgba($color-black, 0.6);
       backdrop-filter: blur(12px);
       color: $color-white;
