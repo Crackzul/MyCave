@@ -365,3 +365,47 @@
   }
 }
 
+// FORCER UNE SEULE COLONNE à 425px et en dessous
+@media (max-width: 425px) {
+  .dashboard-main {
+    padding: 0.5rem;
+    
+    .wines-container {
+      width: 100vw; // Prendre toute la largeur de l'écran
+      max-width: 100%; // Annuler la limitation
+      padding: 0.5rem;
+      margin: 0; // Pas de marge
+      
+      // FORCER Flexbox colonne
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+  }
+  
+  .wine-card {
+    width: calc(100vw - 2rem) !important; // Presque toute la largeur écran
+    max-width: 350px !important; // Mais pas plus que 350px
+    min-width: 280px; // Minimum 280px
+    height: 420px;
+    
+    .wine-image img {
+      height: 90px;
+    }
+    
+    .wine-info h3 {
+      font-size: 15px;
+    }
+    
+    .wine-description {
+      font-size: 11px;
+      -webkit-line-clamp: 4;
+    }
+    
+    .wine-actions .btn-icon {
+      padding: 0.5rem 0.7rem;
+      font-size: 14px;
+    }
+  }
+}
+
